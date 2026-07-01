@@ -285,9 +285,12 @@ make manifests   # 重新生成 config/crd/ 下的 YAML 文件
 flowchart TB
     subgraph Manager[Manager]
         subgraph CtrlRedis[Controller - Redis]
-            Informer[Informer / Cache / Index]
+            InfRedis[Informer / Cache / Index]
             WorkQ[WorkQueue]
             Recon[Reconciler — 你的代码]
+            InfRedis -->|事件入队| WorkQ
+            WorkQ -->|出队调谐| Recon
+            Recon -.->|读取本地缓存| InfRedis
         end
 
         CtrlOther[Controller — 其他]

@@ -9,9 +9,12 @@
 ```mermaid
 flowchart LR
     subgraph CR["Custom Resource (CR)"]
-        SpecBox["**Spec** - 期望状态<br/><br/>• 用户可写<br/>• 描述'我想要什么'<br/>• 修改 Spec 触发 Reconcile"]
-        StatusBox["**Status** - 实际状态<br/><br/>• Controller 写，用户只读<br/>• 描述'现在是什么样'<br/>• 修改 Status 不触发 Reconcile"]
+        SpecBox["<b>**Spec** - 期望状态</b><br/>• 用户可写<br/>• 描述 '我想要什么'<br/>• 修改 Spec 触发 Reconcile"]
+        StatusBox["<b>**Status** - 实际状态</b><br/>• Controller 写，用户只读<br/>• 描述 '现在是什么样'<br/>• 修改 Status 不触发 Reconcile"]
     end
+
+ style SpecBox text-align:left
+ style StatusBox text-align:left
 ```
 
 ### 6.1.2 API 版本演进策略

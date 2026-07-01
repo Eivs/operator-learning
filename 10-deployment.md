@@ -160,9 +160,9 @@ Leader Election 的工作原理：
 
 ```mermaid
 flowchart TB
-    Leader["**Pod A — Leader**<br/>持有 Lease，实际执行 Reconcile"]
-    FollowerB["**Pod B — Follower**<br/>待命，一旦 Leader 挂了就竞选"]
-    FollowerC["**Pod C — Follower**<br/>待命"]
+    Leader["<b>Pod A — Leader</b><br/>持有 Lease，实际执行 Reconcile"]
+    FollowerB["<b>Pod B — Follower</b><br/>待命，一旦 Leader 挂了就竞选"]
+    FollowerC["<b>Pod C — Follower</b><br/>待命"]
     FollowerB -.->|Leader 宕机后竞选| Leader
     FollowerC -.->|Leader 宕机后竞选| Leader
 ```

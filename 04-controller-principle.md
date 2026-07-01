@@ -275,8 +275,6 @@ flowchart TB
     InfRedis -->|"Redis CR 事件<br/>(Add/Update/Delete)"| WQ[WorkQueue<br/>default/my-redis]
     InfDeploy -->|"Deployment 事件<br/>(由 K8S 内部 Controller 产生)"| Ignore[无关？忽略]
     
-    InfRedis -.->|缓存读取| InfRedis
-    
     WQ -->|出队| Worker1[Worker 1]
     WQ -->|出队| Worker2[Worker 2]
     WQ -->|出队| WorkerN[Worker N]
@@ -286,6 +284,7 @@ flowchart TB
     WorkerN --> R
     
     R -->|创建/更新/删除 子资源| APIServer
+    R -.->|从本地缓存读取<br/>不访问 API Server| InfRedis
 ```
 
 关键路径说明：
